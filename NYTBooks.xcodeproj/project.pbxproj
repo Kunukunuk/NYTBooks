@@ -13,6 +13,7 @@
 		0D0410A2216C77E000B2165D /* NYTBooks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410A0216C77E000B2165D /* NYTBooks.xcdatamodeld */; };
 		0D0410A4216C77E100B2165D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D0410A3216C77E100B2165D /* Assets.xcassets */; };
 		0D0410A7216C77E100B2165D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D0410A5216C77E100B2165D /* LaunchScreen.storyboard */; };
+		0D0410AF216C792800B2165D /* NYTApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410AE216C792800B2165D /* NYTApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0D0410A3216C77E100B2165D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D0410A6216C77E100B2165D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D0410A8216C77E100B2165D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D0410AE216C792800B2165D /* NYTApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0D0410A5216C77E100B2165D /* LaunchScreen.storyboard */,
 				0D0410A8216C77E100B2165D /* Info.plist */,
 				0D0410A0216C77E000B2165D /* NYTBooks.xcdatamodeld */,
+				0D0410AE216C792800B2165D /* NYTApiClient.swift */,
 			);
 			path = NYTBooks;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D04109C216C77E000B2165D /* ViewController.swift in Sources */,
+				0D0410AF216C792800B2165D /* NYTApiClient.swift in Sources */,
 				0D0410A2216C77E000B2165D /* NYTBooks.xcdatamodeld in Sources */,
 				0D04109A216C77E000B2165D /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LYDLRGV9G9;
 				INFOPLIST_FILE = NYTBooks/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LYDLRGV9G9;
 				INFOPLIST_FILE = NYTBooks/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
