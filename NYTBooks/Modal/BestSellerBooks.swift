@@ -7,22 +7,44 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class BestSellerBooks {
     
-    /*var listName: String
-    var isbns: [String: String]
+    var displayName: String
     var rankLastWeek: Int
-    var pubDate: Date
+    var pubDate: String
     var amazonURL: String
     var rank: Int
     var weekOnList: Int
-    var displayName: String
-    var bestSellerDate: Date
-    var reviews: [String: String]
+    var bestSellerDate: String
+    var reviews: JSON
+    var bookDetails: JSON
     
-    init(bestSeller: [String: Any]) {
+    init(bestSeller: JSON) {
         
-    }*/
+        displayName = bestSeller["display_name"].stringValue
+        rankLastWeek = bestSeller["rank_last_week"].intValue
+        pubDate = bestSeller["published_date"].stringValue
+        amazonURL = bestSeller["amazon_product_url"].stringValue
+        rank = bestSeller["rank"].intValue
+        weekOnList = bestSeller["week_on_list"].intValue
+        bestSellerDate = bestSeller["bestsellers_date"].stringValue
+        reviews = bestSeller["reviews"]
+        bookDetails = bestSeller["book_details"]
+        
+    }
+    
+    class func books(dictionaries: JSON) -> [BestSellerBooks] {
+        var books: [BestSellerBooks] = []
+        
+        let dictionaryResult = dictionaries["results"]
+        for (_, dictionary )in dictionaryResult {
+            let book = BestSellerBooks(bestSeller: dictionary)
+            books.append(book)
+        }
+        
+        return books
+    }
     
 }

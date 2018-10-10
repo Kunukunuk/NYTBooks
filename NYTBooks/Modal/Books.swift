@@ -12,17 +12,18 @@ class Books {
     var listName: String
     var displayName: String
     var updated: String
-    var newestPubDate: Date
-    var oldestPubdate: Date
+    var newestPubDate: String
+    var oldestPubdate: String
     var listNameEncoded: String
     
     init(dictionary: [String: Any]) {
         listName = dictionary["list_name"] as? String ?? "No title"
         displayName = dictionary["display_name"] as? String ?? "No display name"
         updated = dictionary["updated"] as? String ?? "No updates"
-        newestPubDate = dictionary["newest_published_date"] as? Date ?? Date()
-        oldestPubdate = dictionary["oldest_published_date"] as? Date ?? Date()
+        newestPubDate = dictionary["newest_published_date"] as? String ?? "No new date"
+        oldestPubdate = dictionary["oldest_published_date"] as? String ?? "No old date"
         listNameEncoded = dictionary["list_name_encoded"] as? String ?? "No name encoded"
+        
     }
     
     class func books(dictionaries: [[String: Any]]) -> [Books] {

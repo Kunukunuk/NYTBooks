@@ -14,7 +14,7 @@ import SwiftyJSON
 class NYTApiClient {
     
     static let apiKey = "41b8a4e7f29d4d76908fb3c22c5dd074"
-    static let baseListNameURL = "https://api.nytimes.com/svc/books/v3/lists/names.json"
+    static let baseListNameURL = "https://api.nytimes.com/svc/books/v3/lists/names.json?"
     static let baseBestSellerURL = "https://api.nytimes.com/svc/books/v3/lists.json?"
     var session: URLSession
     
@@ -24,7 +24,7 @@ class NYTApiClient {
     
     func getBooks(completion: @escaping ([Books]?, Error?) -> ()) {
         
-        let url = URL(string: NYTApiClient.baseListNameURL + "?api-key=\(NYTApiClient.apiKey)")!
+        let url = URL(string: NYTApiClient.baseListNameURL + "api-key=\(NYTApiClient.apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
@@ -33,8 +33,8 @@ class NYTApiClient {
                 
                 let bookDictionaries = dataDictionary["results"] as! [[String: Any]]
                 
-                let movies = Books.books(dictionaries: bookDictionaries)
-                completion(movies, nil)
+                let book = Books.books(dictionaries: bookDictionaries)
+                completion(book, nil)
             } else {
                 completion(nil, error)
             }
@@ -42,17 +42,22 @@ class NYTApiClient {
         task.resume()
     }
     
-    func getBestSellerBooks(categoryName: String, completion: @escaping ([Books]?, Error?) -> ()) {
+    func getBestSellerBooks(categoryName: String, completion: @escaping ([BestSellerBooks]?, Error?) -> ()) {
         
         Alamofire.request(NYTApiClient.baseBestSellerURL + "api-key=\(NYTApiClient.apiKey)&list=\(categoryName)").responseJSON {
             reponse in
             if reponse.result.isSuccess {
-                let bestseller : JSON = JSON(reponse.result.value!)
-                print(bestseller)
+                let bestSeller : JSON = JSON(reponse.result.value!)
+                
+                let bestSellerBook = BestSellerBooks.books(dictionaries: bestSeller)
+                completion(bestSellerBook, nil)
                 //self.updateWeatherData(json: weatherData)
             } else {
                 //self.cityLabel.text = "Connection Issues"
+                print("error \(reponse.error)")
+                completion(nil, reponse.error)
             }
         }
     }
+    
 }

@@ -15,7 +15,13 @@ class BookCell: UITableViewCell {
     
     var book: Books! {
         didSet{
-            categoryLabel.text = book.listNameEncoded
+            categoryLabel.text = book.listName
+        }
+    }
+    
+    var bestBook: BestSellerBooks! {
+        didSet{
+            categoryLabel.text = bestBook.displayName
         }
     }
     override func awakeFromNib() {
