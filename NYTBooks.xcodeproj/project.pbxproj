@@ -14,6 +14,11 @@
 		0D0410A4216C77E100B2165D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D0410A3216C77E100B2165D /* Assets.xcassets */; };
 		0D0410A7216C77E100B2165D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D0410A5216C77E100B2165D /* LaunchScreen.storyboard */; };
 		0D0410AF216C792800B2165D /* NYTApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410AE216C792800B2165D /* NYTApiClient.swift */; };
+		0D0410B1216CFFB800B2165D /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410B0216CFFB800B2165D /* Books.swift */; };
+		0D0410B7216D613F00B2165D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410B6216D613F00B2165D /* BookCell.swift */; };
+		0D0410BD216D725C00B2165D /* BestSellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410BC216D725C00B2165D /* BestSellerViewController.swift */; };
+		0D0410BF216D756300B2165D /* BestSellerBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410BE216D756300B2165D /* BestSellerBooks.swift */; };
+		86AD3F070535A927555BB27E /* Pods_NYTBooks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,13 @@
 		0D0410A6216C77E100B2165D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D0410A8216C77E100B2165D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D0410AE216C792800B2165D /* NYTApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTApiClient.swift; sourceTree = "<group>"; };
+		0D0410B0216CFFB800B2165D /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
+		0D0410B6216D613F00B2165D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		0D0410BC216D725C00B2165D /* BestSellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerViewController.swift; sourceTree = "<group>"; };
+		0D0410BE216D756300B2165D /* BestSellerBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerBooks.swift; sourceTree = "<group>"; };
+		77869D0D317FB054A50AECFE /* Pods-NYTBooks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBooks.release.xcconfig"; path = "Target Support Files/Pods-NYTBooks/Pods-NYTBooks.release.xcconfig"; sourceTree = "<group>"; };
+		8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTBooks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F251133C2F4387DB148A7F0 /* Pods-NYTBooks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBooks.debug.xcconfig"; path = "Target Support Files/Pods-NYTBooks/Pods-NYTBooks.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86AD3F070535A927555BB27E /* Pods_NYTBooks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +57,8 @@
 			children = (
 				0D041098216C77E000B2165D /* NYTBooks */,
 				0D041097216C77E000B2165D /* Products */,
+				2F70D24806E55A462EBB6431 /* Pods */,
+				8D512DF990C62B496A45BFDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,15 +74,68 @@
 			isa = PBXGroup;
 			children = (
 				0D041099216C77E000B2165D /* AppDelegate.swift */,
-				0D04109B216C77E000B2165D /* ViewController.swift */,
+				0D0410BB216D618C00B2165D /* API */,
+				0D0410BA216D616D00B2165D /* Modal */,
+				0D0410B9216D615A00B2165D /* View */,
+				0D0410B8216D614D00B2165D /* ViewControllers */,
 				0D04109D216C77E000B2165D /* Main.storyboard */,
 				0D0410A3216C77E100B2165D /* Assets.xcassets */,
 				0D0410A5216C77E100B2165D /* LaunchScreen.storyboard */,
 				0D0410A8216C77E100B2165D /* Info.plist */,
 				0D0410A0216C77E000B2165D /* NYTBooks.xcdatamodeld */,
-				0D0410AE216C792800B2165D /* NYTApiClient.swift */,
 			);
 			path = NYTBooks;
+			sourceTree = "<group>";
+		};
+		0D0410B8216D614D00B2165D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D04109B216C77E000B2165D /* ViewController.swift */,
+				0D0410BC216D725C00B2165D /* BestSellerViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0D0410B9216D615A00B2165D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D0410B6216D613F00B2165D /* BookCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0D0410BA216D616D00B2165D /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				0D0410B0216CFFB800B2165D /* Books.swift */,
+				0D0410BE216D756300B2165D /* BestSellerBooks.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		0D0410BB216D618C00B2165D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0D0410AE216C792800B2165D /* NYTApiClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		2F70D24806E55A462EBB6431 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F251133C2F4387DB148A7F0 /* Pods-NYTBooks.debug.xcconfig */,
+				77869D0D317FB054A50AECFE /* Pods-NYTBooks.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8D512DF990C62B496A45BFDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D0410AB216C77E100B2165D /* Build configuration list for PBXNativeTarget "NYTBooks" */;
 			buildPhases = (
+				9B4DDC4A99473325928C3791 /* [CP] Check Pods Manifest.lock */,
 				0D041092216C77E000B2165D /* Sources */,
 				0D041093216C77E000B2165D /* Frameworks */,
 				0D041094216C77E000B2165D /* Resources */,
+				6655571A4ADD5A1027058A52 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,15 +206,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6655571A4ADD5A1027058A52 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NYTBooks/Pods-NYTBooks-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NYTBooks/Pods-NYTBooks-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B4DDC4A99473325928C3791 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NYTBooks-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0D041092216C77E000B2165D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0410B7216D613F00B2165D /* BookCell.swift in Sources */,
 				0D04109C216C77E000B2165D /* ViewController.swift in Sources */,
 				0D0410AF216C792800B2165D /* NYTApiClient.swift in Sources */,
+				0D0410BF216D756300B2165D /* BestSellerBooks.swift in Sources */,
 				0D0410A2216C77E000B2165D /* NYTBooks.xcdatamodeld in Sources */,
 				0D04109A216C77E000B2165D /* AppDelegate.swift in Sources */,
+				0D0410BD216D725C00B2165D /* BestSellerViewController.swift in Sources */,
+				0D0410B1216CFFB800B2165D /* Books.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +411,7 @@
 		};
 		0D0410AC216C77E100B2165D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F251133C2F4387DB148A7F0 /* Pods-NYTBooks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,6 +431,7 @@
 		};
 		0D0410AD216C77E100B2165D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77869D0D317FB054A50AECFE /* Pods-NYTBooks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
