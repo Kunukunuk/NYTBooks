@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var category: [Category] = []
-    
+    let firstLaunch = UserDefaults.standard.bool(forKey: "launchedBefore")
+    var categoryResult: Results<Category>?
+    let realm = try! Realm()
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -21,43 +23,58 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        fetchBooks()
+        if firstLaunch {
+            loadCategoryFromRealm()
+        } else {
+            saveCategoryToRealm()
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
     }
 
-    func fetchBooks() {
+    func saveCategoryToRealm() {
         
-        NYTApiClient().getBooks { (categorys: [Category]?, error: Error?) in
-            if let categorys = categorys {
-                self.category = categorys
-                self.tableView.reloadData()
+        NYTApiClient().getCategory { (error: Error?) in
+            if error != nil {
+                print("error description: \(error?.localizedDescription ?? "error")")
+            } else {
+                print("Saved successful")
+                self.loadCategoryFromRealm()
             }
         }
         
     }
     
+    func loadCategoryFromRealm() {
+        
+        categoryResult = realm.objects(Category.self)
+        tableView.reloadData()
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if category.isEmpty {
-            return 0
-        } else {
-            return category.count
-        }
+        return categoryResult?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-        
-        cell.category = category[indexPath.row]
+        if let category = categoryResult?[indexPath.row] {
+            cell.category = category
+        }
+       // cell.category = categoryResult?[indexPath.row] ?? cell.categoryLabel.text = "No Category"
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToBestSeller" {
-            let cell = sender as! UITableViewCell
-            if let indexPath = tableView.indexPath(for: cell){
+            //let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationVC = segue.destination as! BestSellerViewController
+                destinationVC.category = categoryResult?[indexPath.row]
+            }
+           /* if let indexPath = tableView.indexPath(for: cell){
                 let destinationVC = segue.destination as! BestSellerViewController
                 destinationVC.category = category[indexPath.row]
-            }
+            }*/
         }
     }
 

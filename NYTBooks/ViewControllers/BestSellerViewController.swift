@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class BestSellerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     var category: Category!
-    var bestSeller: [BestSellerBooks] = []
+    var bestSeller: Results<BestSellerBooks>?
     let defaultSort = UserDefaults.standard
     let sortKey = "lastSort"
+    let realm = try! Realm()
     
     @IBOutlet weak var segmentSort: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -27,7 +29,13 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         
         self.title = category.displayName
         
-        fetchBestSellerBooks()
+        let exist = category.bestSellerBook
+        
+        if exist.isEmpty {
+            saveBestSellerBooks()
+        } else {
+            loadCategoryBestSellerBooks()
+        }
         
     }
     
@@ -40,26 +48,35 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
-    func fetchBestSellerBooks() {
+    func saveBestSellerBooks() {
       
-        NYTApiClient().getBestSellerBooks(categoryName: category.listNameEncoded) { (books: [BestSellerBooks]?, error: Error?) in
-            if let books = books {
-                self.bestSeller = books
-                self.tableView.reloadData()
+        NYTApiClient().getBestSellerBooks(category: category, categoryName: category.listNameEncoded) { (error: Error?) in
+            if error == nil {
+                print("saved successfully")
+                self.loadCategoryBestSellerBooks()
+            } else {
+                print("error saving: \(error?.localizedDescription ?? "error")")
             }
         }
+    }
+    
+    func loadCategoryBestSellerBooks() {
+        
+        bestSeller = category.bestSellerBook.sorted(byKeyPath: "rank", ascending: true)
+        tableView.reloadData()
+        
     }
     
     func sortBooks(selectedIndex: Int) {
         
         if (selectedIndex == 0) {
             
-            bestSeller.sort(by: {$0.rank < $1.rank} )
+            bestSeller = category.bestSellerBook.sorted(byKeyPath: "rank", ascending: true)
             tableView.reloadData()
             
         } else if (selectedIndex == 1) {
             
-            bestSeller.sort(by: { $0.weekOnList > $1.weekOnList })
+            bestSeller = category.bestSellerBook.sorted(byKeyPath: "weekOnList", ascending: false)
             tableView.reloadData()
             
         }
@@ -72,16 +89,12 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if bestSeller.isEmpty {
-            return 0
-        } else {
-            return bestSeller.count
-        }
+        return bestSeller?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BestSellerBooksCell", for: indexPath) as! BestSellerBooksCell
-        cell.bestSellerBook = bestSeller[indexPath.row]
+        cell.bestSellerBook = bestSeller?[indexPath.row]
         return cell
     }
     
@@ -90,7 +103,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
             let destinationVC = segue.destination as! BookDetailsViewController
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell){
-                destinationVC.bookDetails = bestSeller[indexPath.row]
+                destinationVC.bookDetails = bestSeller?[indexPath.row]
             }
             
         }

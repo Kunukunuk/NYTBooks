@@ -12,9 +12,9 @@ class BestSellerBooksCell: UITableViewCell {
 
     @IBOutlet weak var bestSellerBookLabel: UILabel!
     
-    var bestSellerBook: BestSellerBooks! {
+    var bestSellerBook: BestSellerBooks? {
         didSet {
-            bestSellerBookLabel.text = bestSellerBook.bookTitle
+            bestSellerBookLabel.text = bestSellerBook?.bookTitle ?? "No book title"
         }
     }
     override func awakeFromNib() {

@@ -22,7 +22,7 @@ class NYTApiClient {
         session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
     }
     
-    func getBooks(completion: @escaping ([Category]?, Error?) -> ()) {
+    func getCategory(completion: @escaping (Error?) -> ()) {
         
         let url = URL(string: NYTApiClient.baseListNameURL + "api-key=\(NYTApiClient.apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -33,28 +33,26 @@ class NYTApiClient {
                 
                 let bookDictionaries = dataDictionary["results"] as! [[String: Any]]
                 
-                let book = Category.categoryDict(dictionaries: bookDictionaries)
-                completion(book, nil)
+                _ = Category.saveCategory(dictionaries: bookDictionaries)
+                completion(nil)
             } else {
-                completion(nil, error)
+                completion(error)
             }
         }
         task.resume()
     }
     
-    func getBestSellerBooks(categoryName: String, completion: @escaping ([BestSellerBooks]?, Error?) -> ()) {
+    func getBestSellerBooks(category: Category, categoryName: String, completion: @escaping (Error?) -> ()) {
         
         Alamofire.request(NYTApiClient.baseBestSellerURL + "api-key=\(NYTApiClient.apiKey)&list=\(categoryName)").responseJSON {
             reponse in
             if reponse.result.isSuccess {
                 let bestSeller : JSON = JSON(reponse.result.value!)
                 
-                let bestSellerBook = BestSellerBooks.books(dictionaries: bestSeller)
-                completion(bestSellerBook, nil)
-                //self.updateWeatherData(json: weatherData)
+                _ = BestSellerBooks.books(category: category,dictionaries: bestSeller)
+                completion(nil)
             } else {
-                //self.cityLabel.text = "Connection Issues"
-                completion(nil, reponse.result.error)
+                completion( reponse.result.error)
             }
         }
     }

@@ -12,9 +12,9 @@ class CategoryCell: UITableViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
     
-    var category: Category! {
+    var category: Category? {
         didSet {
-            categoryLabel.text = category.displayName
+            categoryLabel.text = category?.displayName ?? "No Category"
         }
     }
     
