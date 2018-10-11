@@ -11,7 +11,7 @@ import UIKit
 class BestSellerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
-    var book: Books!
+    var category: Category!
     var bestSeller: [BestSellerBooks] = []
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,16 +21,15 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.delegate = self
         
-        self.title = book.displayName
+        self.title = category.displayName
         // Do any additional setup after loading the view.
         fetchBestSellerBooks()
-        print("hhh: \(bestSeller.count)")
     }
     
 
     func fetchBestSellerBooks() {
       
-        NYTApiClient().getBestSellerBooks(categoryName: book.listNameEncoded) { (books: [BestSellerBooks]?, error: Error?) in
+        NYTApiClient().getBestSellerBooks(categoryName: category.listNameEncoded) { (books: [BestSellerBooks]?, error: Error?) in
             if let books = books {
                 self.bestSeller = books
                 self.tableView.reloadData()
@@ -52,8 +51,9 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookCell
-        cell.bestBook = bestSeller[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BestSellerBooksCell", for: indexPath) as! BestSellerBooksCell
+        
+        cell.bestSellerBook = bestSeller[indexPath.row]
         return cell
     }
     

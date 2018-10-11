@@ -22,7 +22,7 @@ class NYTApiClient {
         session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
     }
     
-    func getBooks(completion: @escaping ([Books]?, Error?) -> ()) {
+    func getBooks(completion: @escaping ([Category]?, Error?) -> ()) {
         
         let url = URL(string: NYTApiClient.baseListNameURL + "api-key=\(NYTApiClient.apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -33,7 +33,7 @@ class NYTApiClient {
                 
                 let bookDictionaries = dataDictionary["results"] as! [[String: Any]]
                 
-                let book = Books.books(dictionaries: bookDictionaries)
+                let book = Category.categoryDict(dictionaries: bookDictionaries)
                 completion(book, nil)
             } else {
                 completion(nil, error)
@@ -54,8 +54,7 @@ class NYTApiClient {
                 //self.updateWeatherData(json: weatherData)
             } else {
                 //self.cityLabel.text = "Connection Issues"
-                print("error \(reponse.error)")
-                completion(nil, reponse.error)
+                completion(nil, reponse.result.error)
             }
         }
     }

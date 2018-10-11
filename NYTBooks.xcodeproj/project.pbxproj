@@ -18,6 +18,9 @@
 		0D0410B7216D613F00B2165D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410B6216D613F00B2165D /* BookCell.swift */; };
 		0D0410BD216D725C00B2165D /* BestSellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410BC216D725C00B2165D /* BestSellerViewController.swift */; };
 		0D0410BF216D756300B2165D /* BestSellerBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410BE216D756300B2165D /* BestSellerBooks.swift */; };
+		0D0410C5216E224600B2165D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410C4216E224600B2165D /* Category.swift */; };
+		0D0410C7216E23E900B2165D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410C6216E23E900B2165D /* CategoryCell.swift */; };
+		0D0410C9216E2D4900B2165D /* BestSellerBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410C8216E2D4900B2165D /* BestSellerBooksCell.swift */; };
 		86AD3F070535A927555BB27E /* Pods_NYTBooks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		0D0410B6216D613F00B2165D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		0D0410BC216D725C00B2165D /* BestSellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerViewController.swift; sourceTree = "<group>"; };
 		0D0410BE216D756300B2165D /* BestSellerBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerBooks.swift; sourceTree = "<group>"; };
+		0D0410C4216E224600B2165D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0D0410C6216E23E900B2165D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		0D0410C8216E2D4900B2165D /* BestSellerBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerBooksCell.swift; sourceTree = "<group>"; };
 		77869D0D317FB054A50AECFE /* Pods-NYTBooks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBooks.release.xcconfig"; path = "Target Support Files/Pods-NYTBooks/Pods-NYTBooks.release.xcconfig"; sourceTree = "<group>"; };
 		8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTBooks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F251133C2F4387DB148A7F0 /* Pods-NYTBooks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBooks.debug.xcconfig"; path = "Target Support Files/Pods-NYTBooks/Pods-NYTBooks.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				0D0410B6216D613F00B2165D /* BookCell.swift */,
+				0D0410C6216E23E900B2165D /* CategoryCell.swift */,
+				0D0410C8216E2D4900B2165D /* BestSellerBooksCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 			children = (
 				0D0410B0216CFFB800B2165D /* Books.swift */,
 				0D0410BE216D756300B2165D /* BestSellerBooks.swift */,
+				0D0410C4216E224600B2165D /* Category.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -265,9 +274,12 @@
 				0D0410AF216C792800B2165D /* NYTApiClient.swift in Sources */,
 				0D0410BF216D756300B2165D /* BestSellerBooks.swift in Sources */,
 				0D0410A2216C77E000B2165D /* NYTBooks.xcdatamodeld in Sources */,
+				0D0410C5216E224600B2165D /* Category.swift in Sources */,
 				0D04109A216C77E000B2165D /* AppDelegate.swift in Sources */,
 				0D0410BD216D725C00B2165D /* BestSellerViewController.swift in Sources */,
 				0D0410B1216CFFB800B2165D /* Books.swift in Sources */,
+				0D0410C7216E23E900B2165D /* CategoryCell.swift in Sources */,
+				0D0410C9216E2D4900B2165D /* BestSellerBooksCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

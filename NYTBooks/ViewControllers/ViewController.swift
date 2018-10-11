@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var bookInfo: [Books] = []
+    var category: [Category] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,9 +27,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func fetchBooks() {
         
-        NYTApiClient().getBooks { (books: [Books]?, error: Error?) in
-            if let books = books {
-                self.bookInfo = books
+        NYTApiClient().getBooks { (categorys: [Category]?, error: Error?) in
+            if let categorys = categorys {
+                self.category = categorys
                 self.tableView.reloadData()
             }
         }
@@ -37,16 +37,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if bookInfo.isEmpty {
+        if category.isEmpty {
             return 0
         } else {
-            return bookInfo.count
+            return category.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookCell
-        cell.book = bookInfo[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+        
+        cell.category = category[indexPath.row]
         return cell
     }
     
@@ -55,7 +56,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell){
                 let destinationVC = segue.destination as! BestSellerViewController
-                destinationVC.book = bookInfo[indexPath.row]
+                destinationVC.category = category[indexPath.row]
             }
         }
     }

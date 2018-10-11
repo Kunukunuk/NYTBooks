@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="101" id="q1B-gY-uXU" customClass="BookCell" customModule="NYTBooks" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="101" id="q1B-gY-uXU" customClass="CategoryCell" customModule="NYTBooks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q1B-gY-uXU" id="Bsv-XA-Igr">
@@ -44,7 +44,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="categoryLabel" destination="Zri-wN-yi5" id="kwN-r2-IyC"/>
+                                            <outlet property="categoryLabel" destination="Zri-wN-yi5" id="Bvg-uy-hfz"/>
                                             <segue destination="JhC-TV-f0G" kind="show" identifier="GoToBestSeller" id="pE7-qw-aMd"/>
                                         </connections>
                                     </tableViewCell>
@@ -92,7 +92,7 @@
                                 <rect key="frame" x="0.0" y="97" width="375" height="570"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="84" id="Dc7-Lc-DHl" customClass="BookCell" customModule="NYTBooks" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BestSellerBooksCell" rowHeight="84" id="Dc7-Lc-DHl" customClass="BestSellerBooksCell" customModule="NYTBooks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dc7-Lc-DHl" id="rXT-Ob-yvB">
@@ -113,6 +113,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="4qc-j0-Qfz" secondAttribute="bottom" id="hq8-df-8ZE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bestSellerBookLabel" destination="4qc-j0-Qfz" id="3xo-0q-wsQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
