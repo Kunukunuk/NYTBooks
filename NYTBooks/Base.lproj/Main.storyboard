@@ -133,6 +133,7 @@
                         <viewLayoutGuide key="safeArea" id="Sb2-2y-7LY"/>
                     </view>
                     <connections>
+                        <outlet property="segmentSort" destination="6iC-uL-HLO" id="n2e-Bg-GRb"/>
                         <outlet property="tableView" destination="4iY-mO-Bey" id="P8i-m0-BXS"/>
                     </connections>
                 </viewController>

@@ -19,7 +19,6 @@
 		0D0410C5216E224600B2165D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410C4216E224600B2165D /* Category.swift */; };
 		0D0410C7216E23E900B2165D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410C6216E23E900B2165D /* CategoryCell.swift */; };
 		0D0410C9216E2D4900B2165D /* BestSellerBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410C8216E2D4900B2165D /* BestSellerBooksCell.swift */; };
-		0D0410CD216ED64300B2165D /* BookDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410CC216ED64300B2165D /* BookDetailsView.swift */; };
 		0D0410CF216EE20A00B2165D /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0410CE216EE20A00B2165D /* BookDetailsViewController.swift */; };
 		86AD3F070535A927555BB27E /* Pods_NYTBooks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */; };
 /* End PBXBuildFile section */
@@ -39,7 +38,6 @@
 		0D0410C4216E224600B2165D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		0D0410C6216E23E900B2165D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0D0410C8216E2D4900B2165D /* BestSellerBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerBooksCell.swift; sourceTree = "<group>"; };
-		0D0410CC216ED64300B2165D /* BookDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsView.swift; sourceTree = "<group>"; };
 		0D0410CE216EE20A00B2165D /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		77869D0D317FB054A50AECFE /* Pods-NYTBooks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBooks.release.xcconfig"; path = "Target Support Files/Pods-NYTBooks/Pods-NYTBooks.release.xcconfig"; sourceTree = "<group>"; };
 		8C140A5E504F5EFB94D65620 /* Pods_NYTBooks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTBooks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +106,6 @@
 			children = (
 				0D0410C6216E23E900B2165D /* CategoryCell.swift */,
 				0D0410C8216E2D4900B2165D /* BestSellerBooksCell.swift */,
-				0D0410CC216ED64300B2165D /* BookDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,6 +223,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-NYTBooks/Pods-NYTBooks-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -233,6 +232,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +273,6 @@
 				0D04109C216C77E000B2165D /* ViewController.swift in Sources */,
 				0D0410AF216C792800B2165D /* NYTApiClient.swift in Sources */,
 				0D0410BF216D756300B2165D /* BestSellerBooks.swift in Sources */,
-				0D0410CD216ED64300B2165D /* BookDetailsView.swift in Sources */,
 				0D0410A2216C77E000B2165D /* NYTBooks.xcdatamodeld in Sources */,
 				0D0410CF216EE20A00B2165D /* BookDetailsViewController.swift in Sources */,
 				0D0410C5216E224600B2165D /* Category.swift in Sources */,
