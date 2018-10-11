@@ -36,7 +36,6 @@ class BestSellerBooks {
     
     init(bestSeller: JSON) {
         
-        print("seller: \(bestSeller)")
         displayName = bestSeller["display_name"].stringValue
         rankLastWeek = bestSeller["rank_last_week"].intValue
         pubDate = bestSeller["published_date"].stringValue

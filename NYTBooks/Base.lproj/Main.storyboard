@@ -114,6 +114,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bestSellerBookLabel" destination="4qc-j0-Qfz" id="3xo-0q-wsQ"/>
+                                            <segue destination="08u-DW-a4T" kind="show" identifier="GoToBookDetails" id="HvI-HV-Zrj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -138,6 +139,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKd-gp-MDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2092" y="116.49175412293854"/>
+        </scene>
+        <!--Book Details View Controller-->
+        <scene sceneID="wQM-bR-p4z">
+            <objects>
+                <viewController id="08u-DW-a4T" customClass="BookDetailsViewController" customModule="NYTBooks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tds-f2-WMD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfU-0W-Jha">
+                                <rect key="frame" x="10" y="74" width="355" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQy-Kt-55m">
+                                <rect key="frame" x="10" y="109" width="355" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-fl-07H">
+                                <rect key="frame" x="10" y="138" width="355" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUX-XM-HDr">
+                                <rect key="frame" x="10" y="172" width="355" height="30"/>
+                                <state key="normal" title="Amazon Link"/>
+                                <connections>
+                                    <action selector="goToReview:" destination="08u-DW-a4T" eventType="touchUpInside" id="QRg-td-eWt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAc-Hu-1pP">
+                                <rect key="frame" x="10" y="252" width="355" height="30"/>
+                                <state key="normal" title="Book Review Link"/>
+                                <connections>
+                                    <action selector="goToReview:" destination="08u-DW-a4T" eventType="touchUpInside" id="aBI-e8-iFw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KW-rz-m9E">
+                                <rect key="frame" x="10" y="332" width="355" height="30"/>
+                                <state key="normal" title="Sunday Review Link"/>
+                                <connections>
+                                    <action selector="goToReview:" destination="08u-DW-a4T" eventType="touchUpInside" id="xuH-eQ-wvk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-xh-Ggd">
+                                <rect key="frame" x="10" y="292" width="355" height="30"/>
+                                <state key="normal" title="First Chapter Link"/>
+                                <connections>
+                                    <action selector="goToReview:" destination="08u-DW-a4T" eventType="touchUpInside" id="Ed1-8x-ZRX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXi-bp-CMh">
+                                <rect key="frame" x="10" y="212" width="355" height="30"/>
+                                <state key="normal" title="Article Chapter Link"/>
+                                <connections>
+                                    <action selector="goToReview:" destination="08u-DW-a4T" eventType="touchUpInside" id="D3p-VI-y4Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gfU-0W-Jha" firstAttribute="top" secondItem="XEd-fg-gJc" secondAttribute="top" constant="10" id="4Yx-CK-ezc"/>
+                            <constraint firstItem="PXi-bp-CMh" firstAttribute="top" secondItem="DUX-XM-HDr" secondAttribute="bottom" constant="10" id="5QO-Np-IQr"/>
+                            <constraint firstItem="8KW-rz-m9E" firstAttribute="top" secondItem="DNu-xh-Ggd" secondAttribute="bottom" constant="10" id="7cY-Kc-VEc"/>
+                            <constraint firstItem="NQy-Kt-55m" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="7in-QJ-G6J"/>
+                            <constraint firstItem="DUX-XM-HDr" firstAttribute="top" secondItem="OXn-fl-07H" secondAttribute="bottom" constant="10" id="8RT-za-GA2"/>
+                            <constraint firstItem="iAc-Hu-1pP" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="AbH-yf-fk9"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="gfU-0W-Jha" secondAttribute="trailing" constant="10" id="H56-iz-DFA"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="PXi-bp-CMh" secondAttribute="trailing" constant="10" id="K3g-SO-bNO"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="OXn-fl-07H" secondAttribute="trailing" constant="10" id="LJ9-6b-U1X"/>
+                            <constraint firstItem="OXn-fl-07H" firstAttribute="top" secondItem="NQy-Kt-55m" secondAttribute="bottom" constant="5" id="Pdn-I0-nID"/>
+                            <constraint firstItem="8KW-rz-m9E" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="R0l-D5-3ki"/>
+                            <constraint firstItem="NQy-Kt-55m" firstAttribute="top" secondItem="gfU-0W-Jha" secondAttribute="bottom" constant="5" id="Zhe-aI-iKm"/>
+                            <constraint firstItem="iAc-Hu-1pP" firstAttribute="top" secondItem="PXi-bp-CMh" secondAttribute="bottom" constant="10" id="ZoL-0W-JCt"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="NQy-Kt-55m" secondAttribute="trailing" constant="10" id="aWS-YV-xHn"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="iAc-Hu-1pP" secondAttribute="trailing" constant="10" id="bDA-Vg-pMd"/>
+                            <constraint firstItem="gfU-0W-Jha" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="iFp-4d-hAa"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="DUX-XM-HDr" secondAttribute="trailing" constant="10" id="nlA-Lp-7Ls"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="8KW-rz-m9E" secondAttribute="trailing" constant="10" id="pqE-hR-LTL"/>
+                            <constraint firstItem="XEd-fg-gJc" firstAttribute="trailing" secondItem="DNu-xh-Ggd" secondAttribute="trailing" constant="10" id="qcv-EF-L20"/>
+                            <constraint firstItem="DUX-XM-HDr" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="s0o-w6-Y1b"/>
+                            <constraint firstItem="DNu-xh-Ggd" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="u9a-aW-dkO"/>
+                            <constraint firstItem="PXi-bp-CMh" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="ucY-oj-Vd6"/>
+                            <constraint firstItem="OXn-fl-07H" firstAttribute="leading" secondItem="XEd-fg-gJc" secondAttribute="leading" constant="10" id="wll-yv-PA1"/>
+                            <constraint firstItem="DNu-xh-Ggd" firstAttribute="top" secondItem="iAc-Hu-1pP" secondAttribute="bottom" constant="10" id="wnB-Ko-LI6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XEd-fg-gJc"/>
+                    </view>
+                    <connections>
+                        <outlet property="amazonLink" destination="DUX-XM-HDr" id="jcI-64-Tqg"/>
+                        <outlet property="articleChapterLink" destination="PXi-bp-CMh" id="JfU-ac-Fdo"/>
+                        <outlet property="bookAuthorLabel" destination="OXn-fl-07H" id="Ze6-Hg-4i8"/>
+                        <outlet property="bookDescriptionLabel" destination="NQy-Kt-55m" id="dX7-FD-1pt"/>
+                        <outlet property="bookReview" destination="iAc-Hu-1pP" id="erC-CR-qbh"/>
+                        <outlet property="bookTitleLabel" destination="gfU-0W-Jha" id="tiE-Pg-uDy"/>
+                        <outlet property="firstChapterLink" destination="DNu-xh-Ggd" id="561-iB-ua5"/>
+                        <outlet property="sundayReview" destination="8KW-rz-m9E" id="pQu-mm-DNg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LOP-7l-ePF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3208.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zbl-MJ-uVA">
