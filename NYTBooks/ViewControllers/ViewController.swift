@@ -8,10 +8,14 @@
 
 import UIKit
 import RealmSwift
+import MBProgressHUD
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let firstLaunch = UserDefaults.standard.bool(forKey: "launchedBefore")
+    let date = Date()
+    let calendar = Calendar(identifier: .gregorian)
+    
     var categoryResult: Results<Category>?
     let realm = try! Realm()
     @IBOutlet weak var tableView: UITableView!
@@ -29,8 +33,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             saveCategoryToRealm()
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
+        let sunday = calendar.component(.weekday, from: date)
+        if sunday == 1 {
+            saveCategoryToRealm()
+        }
     }
-
+    
     func saveCategoryToRealm() {
         
         NYTApiClient().getCategory { (error: Error?) in

@@ -7,6 +7,7 @@ target 'NYTBooks' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'RealmSwift'
+	pod 'MBProgressHUD'
   # Pods for NYTBooks
 
 end
