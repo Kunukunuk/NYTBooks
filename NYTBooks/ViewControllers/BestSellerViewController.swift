@@ -13,6 +13,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     
     var category: Category!
     var bestSeller: [BestSellerBooks] = []
+    var defaultBestSeller: [BestSellerBooks] = []
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         NYTApiClient().getBestSellerBooks(categoryName: category.listNameEncoded) { (books: [BestSellerBooks]?, error: Error?) in
             if let books = books {
                 self.bestSeller = books
+                self.defaultBestSeller = books
                 self.tableView.reloadData()
             }
         }
@@ -39,7 +41,17 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func sortBy(_ sender: UISegmentedControl) {
         
-        print(sender.selectedSegmentIndex)
+       if (sender.selectedSegmentIndex == 0) {
+            
+            bestSeller.sort(by: {$0.rank < $1.rank} )
+            tableView.reloadData()
+            
+        } else if (sender.selectedSegmentIndex == 1) {
+            
+            bestSeller.sort(by: { $0.weekOnList > $1.weekOnList })
+            tableView.reloadData()
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +64,6 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BestSellerBooksCell", for: indexPath) as! BestSellerBooksCell
-        
         cell.bestSellerBook = bestSeller[indexPath.row]
         return cell
     }

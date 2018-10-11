@@ -42,7 +42,7 @@ class BestSellerBooks {
         pubDate = bestSeller["published_date"].stringValue
         amazonURL = bestSeller["amazon_product_url"].stringValue
         rank = bestSeller["rank"].intValue
-        weekOnList = bestSeller["week_on_list"].intValue
+        weekOnList = bestSeller["weeks_on_list"].intValue
         bestSellerDate = bestSeller["bestsellers_date"].stringValue
         reviews = bestSeller["reviews"]
         bookDetails = bestSeller["book_details"]
