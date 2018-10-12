@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import MBProgressHUD
 
 class BestSellerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -49,20 +50,36 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func saveBestSellerBooks() {
-      
+        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loading.label.text = "Getting Book Names"
         NYTApiClient().getBestSellerBooks(category: category, categoryName: category.listNameEncoded) { (error: Error?) in
             if error == nil {
                 print("saved successfully")
                 self.loadCategoryBestSellerBooks()
+                loading.mode = .customView
+                loading.customView = UIImageView(image: UIImage(named: "check.png"))
+                loading.label.text = "Finished"
+                loading.hide(animated: true, afterDelay: 1)
             } else {
                 print("error saving: \(error?.localizedDescription ?? "error")")
+                loading.mode = .customView
+                loading.customView = UIImageView(image: UIImage(named: "error.png"))
+                loading.label.text = "Error"
+                loading.hide(animated: true, afterDelay: 1)
             }
         }
     }
     
     func loadCategoryBestSellerBooks() {
+        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loading.label.text = "Getting Book Names"
         
         bestSeller = category.bestSellerBook.sorted(byKeyPath: "rank", ascending: true)
+        
+        loading.mode = .customView
+        loading.customView = UIImageView(image: UIImage(named: "check.png"))
+        loading.label.text = "Loaded Data"
+        loading.hide(animated: true, afterDelay: 1)
         tableView.reloadData()
         
     }

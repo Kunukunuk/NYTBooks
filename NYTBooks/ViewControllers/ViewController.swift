@@ -27,12 +27,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.dataSource = self
         tableView.delegate = self
+
         if firstLaunch {
             loadCategoryFromRealm()
         } else {
             saveCategoryToRealm()
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
+
         let sunday = calendar.component(.weekday, from: date)
         if sunday == 1 {
             saveCategoryToRealm()
@@ -40,22 +42,39 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func saveCategoryToRealm() {
+        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loading.label.text = "Getting Categories"
         
         NYTApiClient().getCategory { (error: Error?) in
             if error != nil {
                 print("error description: \(error?.localizedDescription ?? "error")")
+                loading.mode = .customView
+                loading.customView = UIImageView(image: UIImage(named: "error.png"))
+                loading.label.text = "Failed"
+                loading.hide(animated: true, afterDelay: 1)
             } else {
                 print("Saved successful")
                 self.loadCategoryFromRealm()
+                loading.mode = .customView
+                loading.customView = UIImageView(image: UIImage(named: "check.png"))
+                loading.label.text = "Finished"
+                loading.hide(animated: true, afterDelay: 1)
             }
         }
         
     }
     
     func loadCategoryFromRealm() {
+        let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loading.label.text = "Getting Categories"
         
         categoryResult = realm.objects(Category.self)
+        
         tableView.reloadData()
+        loading.mode = .customView
+        loading.customView = UIImageView(image: UIImage(named: "check.png"))
+        loading.label.text = "Loaded Data"
+        loading.hide(animated: true, afterDelay: 1)
         
     }
     
