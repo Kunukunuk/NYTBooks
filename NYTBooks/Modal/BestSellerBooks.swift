@@ -67,7 +67,7 @@ class BestSellerBooks: Object{
         }
         
     }*/
-    
+    //Mark: Helper function to get data from API and save it to realm
     class func books(category: Category, dictionaries: JSON) {
         let realm = try! Realm()
         

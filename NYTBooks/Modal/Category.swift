@@ -29,7 +29,7 @@ class Category: Object {
         listNameEncoded = dictionary["list_name_encoded"] as? String ?? "No name encoded"
         
     }*/
-    
+    //Mark: Helper function to get API data and save to realm
     class func saveCategory(dictionaries: [[String: Any]]){
         let realm = try! Realm()
         

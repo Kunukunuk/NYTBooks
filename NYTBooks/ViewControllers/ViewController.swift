@@ -13,6 +13,7 @@ import MBProgressHUD
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let firstLaunch = UserDefaults.standard.bool(forKey: "launchedBefore")
+    let getUpdate = UserDefaults.standard.bool(forKey: "getUpdate")
     let date = Date()
     let calendar = Calendar(identifier: .gregorian)
     
@@ -20,7 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let realm = try! Realm()
     @IBOutlet weak var tableView: UITableView!
     
-    
+    //Mark: - Loads and checks to call api or load from database, check if it's time to update
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -36,11 +37,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         let sunday = calendar.component(.weekday, from: date)
-        if sunday == 1 {
+        
+        if (sunday == 1 && getUpdate) {
+            realm.deleteAll()
             saveCategoryToRealm()
+            UserDefaults.standard.set(false, forKey: "getUpdate")
+        } else if (sunday == 6){
+            UserDefaults.standard.set(true, forKey: "getUpdate")
         }
     }
     
+    // Mark - API call to NYT API and store the data on realm
     func saveCategoryToRealm() {
         let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
         loading.label.text = "Getting Categories"
@@ -64,6 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    // Mark: - load data from realm
     func loadCategoryFromRealm() {
         let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
         loading.label.text = "Getting Categories"
@@ -78,10 +86,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    // Mark: - table view datasource for number of row
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryResult?.count ?? 1
     }
     
+    // Mark: - table view datasource view for each cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         if let category = categoryResult?[indexPath.row] {
@@ -91,6 +102,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    // Mark: - Change view controller and pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToBestSeller" {
             //let cell = sender as! UITableViewCell
@@ -98,10 +110,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let destinationVC = segue.destination as! BestSellerViewController
                 destinationVC.category = categoryResult?[indexPath.row]
             }
-           /* if let indexPath = tableView.indexPath(for: cell){
-                let destinationVC = segue.destination as! BestSellerViewController
-                destinationVC.category = category[indexPath.row]
-            }*/
         }
     }
 

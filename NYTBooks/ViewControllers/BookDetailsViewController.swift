@@ -25,8 +25,8 @@ class BookDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bookTitleLabel.text = bookDetails.bookTitle
-        bookDescriptionLabel.text = bookDetails.bookDescription
+        bookTitleLabel.text = "Book Title:\n\(bookDetails.bookTitle)"
+        bookDescriptionLabel.text = "Book Description:\n\(bookDetails.bookDescription)"
         bookAuthorLabel.text = "Author: \(bookDetails.bookAuthor)"
         if bookDetails.amazonURL == "" {
             amazonLink.isEnabled = false
@@ -56,7 +56,7 @@ class BookDetailsViewController: UIViewController {
         buttonLinks["Sunday Review Link"] = bookDetails.sundayReview
     }
     
-    
+    //Mark: Open the link to the review
     @IBAction func goToReview(_ sender: UIButton) {
         
         let text = sender.titleLabel?.text

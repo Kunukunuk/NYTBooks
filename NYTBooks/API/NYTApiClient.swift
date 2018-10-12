@@ -21,7 +21,7 @@ class NYTApiClient {
     init() {
         session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
     }
-    
+    //Mark: Get category names from NYT API
     func getCategory(completion: @escaping (Error?) -> ()) {
         
         let url = URL(string: NYTApiClient.baseListNameURL + "api-key=\(NYTApiClient.apiKey)")!
@@ -41,7 +41,7 @@ class NYTApiClient {
         }
         task.resume()
     }
-    
+    //Mark: Get best seller books from NYT API
     func getBestSellerBooks(category: Category, categoryName: String, completion: @escaping (Error?) -> ()) {
         
         Alamofire.request(NYTApiClient.baseBestSellerURL + "api-key=\(NYTApiClient.apiKey)&list=\(categoryName)").responseJSON {

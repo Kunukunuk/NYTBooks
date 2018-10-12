@@ -22,6 +22,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var segmentSort: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    //Mark: set title and checks if the realm object exist
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +40,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         }
         
     }
-    
+    //Mark: Save the last sort by option
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         if let lastSort = defaultSort.object(forKey: sortKey) {
@@ -49,6 +50,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
+    //Mark: API call to get all the best seller books in the category
     func saveBestSellerBooks() {
         let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
         loading.label.text = "Getting Book Names"
@@ -70,6 +72,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    //Mark: Loads data from realm
     func loadCategoryBestSellerBooks() {
         let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
         loading.label.text = "Getting Book Names"
@@ -84,6 +87,7 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    //Mark: sort the listing
     func sortBooks(selectedIndex: Int) {
         
         if (selectedIndex == 0) {
@@ -99,22 +103,26 @@ class BestSellerViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    //Mark: Button to sort the listing of books
     @IBAction func sortBy(_ sender: UISegmentedControl) {
         
         defaultSort.set(sender.selectedSegmentIndex, forKey: sortKey)
         sortBooks(selectedIndex: sender.selectedSegmentIndex)
     }
     
+    //Mark: Table view datasource for number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bestSeller?.count ?? 1
     }
     
+    //Mark: Table view datasource for each cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BestSellerBooksCell", for: indexPath) as! BestSellerBooksCell
         cell.bestSellerBook = bestSeller?[indexPath.row]
         return cell
     }
     
+    //Mark: Change view controller and pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToBookDetails" {
             let destinationVC = segue.destination as! BookDetailsViewController
