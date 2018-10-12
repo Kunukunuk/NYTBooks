@@ -19,7 +19,7 @@ Uses the NYTimes API to get data to display books in a list
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![kun_huang_nyt](https://user-images.githubusercontent.com/28847045/46846206-c64ffd00-cdac-11e8-9ad8-c8300c65b4c4.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
