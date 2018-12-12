@@ -1,6 +1,6 @@
 # *NYT Books*
 
-**NYT Books** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+**NYT Books** is an iOS app using the https://developer.nytimes.com api to get information about books.
 
 Time spent: **25** hours spent in total
 
